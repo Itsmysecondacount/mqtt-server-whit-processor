@@ -4,38 +4,36 @@ import crud
 import database
 from datetime import datetime
 
-
-
-# Función para obtener una nueva sesión de la base de datos
+# Function to obtain a new database session
 def get_db():
     return database.SessionLocal()
 
-# Configuración del broker
-BROKER = "localhost"  # Cambia a la dirección IP de tu broker si es necesario
+# Broker configuration
+BROKER = "localhost"  # Change to your broker's IP address if necessary
 PORT = 1883
 
-# Callback cuando nos conectamos al broker
+# Callback for when we connect to the broker
 def on_connect(client, userdata, flags, rc):
-    print("Conectado con el código: " + str(rc))
-    client.subscribe("hospedaje/temperatura/#")
+    print("Connected with code: " + str(rc))
+    client.subscribe("hosting/temperature/#")
 
-# Callback cuando recibimos un mensaje
+# Callback for when we receive a message
 def on_message(client, userdata, msg):
-    temperatura_rec = msg.payload.decode()
-    topico = msg.topic
-    print(f"Mensaje recibido en el tópico {topico} -> {temperatura_rec}")
-    db = get_db()  # Obtener una nueva sesión
+    received_temperature = msg.payload.decode()
+    topic = msg.topic
+    print(f"Message received on topic {topic} -> {received_temperature}")
+    db = get_db()  # Get a new session
     current_datetime = datetime.now()
     try:
-        datos_creados = crud.insert_data_temperature(db, current_datetime , topico, temperatura_rec)
-        print(datos_creados)
+        created_data = crud.insert_data_temperature(db, current_datetime, topic, received_temperature)
+        print(created_data)
     finally:
-        db.close()  # Asegúrate de cerrar la sesión
+        db.close()  # Make sure to close the session
 
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(BROKER, PORT, 60)
 
-# Loop infinito para mantener la suscripción activa
+# Infinite loop to keep the subscription active
 client.loop_forever()
