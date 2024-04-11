@@ -1,0 +1,7 @@
+paho-mqtt==1.6.1
+
+sqlalchemy
+
+pytest
+
+mysql-connector-python
