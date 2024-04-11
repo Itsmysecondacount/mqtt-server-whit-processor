@@ -43,3 +43,5 @@ It is recommended to work within a virtual environment. Create one and activate 
 After activating the virtual environment, install the required dependencies with:
 
     pip install -r requirements.txt
+
+[Here's how to create a temperature sensor with esp32.](https://github.com/Itsmysecondacount/mqtt-esp32-read-temperature-of-solar-storage)
