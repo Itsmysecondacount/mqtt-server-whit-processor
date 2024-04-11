@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, Text, Float, Date, ForeignKey, DateTime, Sequence
 
-SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:tokyo3@localhost:3410/IOT_DATABASE"
+SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:PASSWORD@IP:3410/IOT_DATABASE"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
