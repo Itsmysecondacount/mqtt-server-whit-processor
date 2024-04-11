@@ -1,11 +1,9 @@
-version: '3'
-
 services:
   mosquitto:
     image: eclipse-mosquitto
     container_name: mosquitto-2
     ports:
-      - "1883:1883"
+      - '1883:1883'
     volumes:
       - ./mosquito-config/config:/mosquitto/config
       - ./mosquito-config/data:/mosquitto/data
