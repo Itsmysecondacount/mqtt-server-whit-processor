@@ -6,7 +6,7 @@ This project is an MQTT server setup that receives temperature data from various
 
 To get the MQTT server up and running, simply navigate to the directory containing the `docker-compose.yml` file and execute the following command:
 
-    	bash
+    bash
     	docker-compose up
 
 If you need to change the port the MQTT server listens on, you can modify the port mapping in the docker-compose.yml file.
@@ -17,7 +17,7 @@ Within the mqtt-py folder, you'll find a publisher (Pub) and a subscriber (Sub).
 
 There's also a data processor script that connects to a database to store the data along with the time it was taken and the type of value. The database structure is generalized to accommodate various types of sensor data such as humidity, flow, velocity, etc.
 
-    	class ValoresMQTTTemperatura(Base):
+    class ValoresMQTTTemperatura(Base):
     __tablename__ = 'VALORES_MQTT_TEMPERATURA'
 
     id = Column(Integer, Sequence('id_seq'), primary_key=True)
@@ -33,21 +33,13 @@ To connect to your own database, simply change the database URL in the database 
 
 To execute any Python file in the mqtt-py directory, use:
 
-    	python <file_name>.py
+    python <file_name>.py
 
 It is recommended to work within a virtual environment. Create one and activate it with:
 
-    	python -m venv .venv
-    	source .venv/bin/activate  # On Linux
+    python -m venv .venv
+    source .venv/bin/activate  # On Linux
 
 After activating the virtual environment, install the required dependencies with:
 
-    	pip install -r requirements.txt
-
-## License
-
-Specify the license under which this project is made available.
-
-## Contact
-
-Provide your contact information or a way for users to report issues and contribute to the project.
+    pip install -r requirements.txt
