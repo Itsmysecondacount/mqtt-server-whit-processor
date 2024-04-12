@@ -45,3 +45,5 @@ After activating the virtual environment, install the required dependencies with
     pip install -r requirements.txt
 
 [Here's how to create a temperature sensor with esp32.](https://github.com/Itsmysecondacount/mqtt-esp32-read-temperature-of-solar-storage)
+
+[Here's how to create a subscriber whit oled and esp32.](https://github.com/Itsmysecondacount/mqtt-sub-whit-display)
